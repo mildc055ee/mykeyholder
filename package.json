@@ -1,0 +1,16 @@
+{
+  "name": "mykeyholder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository":{
+    "type": "git",
+    "url": "git@github.com:mildc055ee/mykeyholder.git"
+  },
+  "keywords": [],
+  "author": "mildc055ee",
+  "license": "MIT"
+}
