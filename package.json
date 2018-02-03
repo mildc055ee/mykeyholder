@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "git@github.com:mildc055ee/mykeyholder.git"
   },
   "keywords": [],
   "author": "mildc055ee",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
