@@ -2,15 +2,51 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>mykeyholder</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<title>keyholder</title>
 	</head>
 	<body>
-		<div id = "app">
-			{{message}}
-			test
-		</div>
-		<p>hello world</p>
+			<div class="navbar-fixed-top mytop">
+				Key Manager
+			</div>
+			<div id = "app" class="padding">
+				{{message}}
+			</div>
+			<div id="table">
+				<table id = "pass-table" class="table table-striped">
+					<thread>
+						<tr>
+							<th>contents</th>
+							<th>ID</th>
+							<th>email</th>
+							<th>password</th>
+							<th></th>
+						</tr>
+					</thread>
+					<tbody>
+						<tr v-for="task in tasks"  v-if="!task.isDeleted">
+							<td>{{ task.content }}</td>
+							<td>{{ task.id }}</td>
+							<td>{{ task.email }}</td>
+							<td>{{ task.pass }}</td>
+							<td>
+								<div class="btn btn-danger"  v-on:click="deletePass(task)">Delete</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="fixed-bottom">
+				register new password<br />
+				<input v-model="newContents" placeholder="contents">
+				<input v-model="newID" placeholder="ID" >
+				<input v-model="newEmail" placeholder="email">
+				<input v-model="newPass" placeholder="password">
+				<div class="btn btn-primary">Register</div>
+			</div>
 	</body>
 	<script src="./js/vue.js"></script>
 	<script type="text/javascript" src="./js/layout.js"></script>
+	<script type="text/javascript" src="./js/table.js"></script>
+	<script type="text/css" src="./css/style.css"></script>
 </html>
