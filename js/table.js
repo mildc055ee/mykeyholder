@@ -1,5 +1,5 @@
 let tableControl = new Vue({
-  el: '#table',
+  el: '#pass-table',
   data:{
     tasks:[
       {content: 'lazy', id: 'foo', email: 'hoge@example.com', pass:'fizz', isDeleted: false},

@@ -1,4 +1,19 @@
+.over{
+  background-image: url("..//img/background.jpg");
+  width:50%;
+  height:50%;
+}
+
 .mytop{
-  font-size: 20px;
+  font-size: 24px;
+  font-family: "Behind Script";
+  color: white;
   background-color: rgba(75,86,104,1);
+}
+.body{
+  margin: 10px;
+}
+.img{
+  width: 24px;
+  height: 24px;
 }
