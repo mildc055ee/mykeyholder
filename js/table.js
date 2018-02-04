@@ -5,21 +5,28 @@ let tableControl = new Vue({
       {content: 'lazy', id: 'foo', email: 'hoge@example.com', pass:'fizz'},
       {content: 'busy', id: 'hoo', email: 'foga@example.com', pass:'buzz'},
     ],
+  },
+
+  methods: {
+    deletePass: function(index) {
+      this.passlist.splice(index, 1);
+    }
+  }
+});
+
+let addList = new Vue({
+  el:'#pass-adder',
+
+  data:{
     newContents:'',
     newID:'',
     newEmail:'',
     newPass:''
   },
 
-  methods: {
-    /*
+  methods:{
     createPass: function() {
-      this.passlist.push({contents: this.newContents, id: this.newID, email:this.newEmail, pass: this.newPass})
-    },
-    */
-
-    deletePass: function(index) {
-      this.passlist.splice(index, 1);
+      tableControl.passlist.push({content: this.newContents, id: this.newID, email: this.newEmail, pass: this.newPass});
     }
   }
-})
+});

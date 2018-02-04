@@ -11,7 +11,7 @@
 				Key Manager
 			</div>
 			<div id = "app" class="padding body">
-				{{message}}
+				{{ message }}
 			</div>
 			<div id="table" class="body">
 				<table id = "pass-table" class="table table-striped">
@@ -37,13 +37,13 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="fixed-bottom">
+			<div id="pass-adder" class="fixed-bottom">
 				register new password<br />
 				<input v-model="newContents" placeholder="contents">
 				<input v-model="newID" placeholder="ID" >
 				<input v-model="newEmail" placeholder="email">
 				<input v-model="newPass" placeholder="password">
-				<div class="btn btn-primary">Register</div>
+				<div class="btn btn-primary" @click="createPass()">Register</div>
 			</div>
 	</body>
 	<script src="./js/vue.js"></script>
