@@ -25,13 +25,13 @@
 						</tr>
 					</thread>
 					<tbody>
-						<tr v-for="task in tasks"  v-if="!task.isDeleted">
-							<td>{{ task.content }}</td>
-							<td>{{ task.id }}</td>
-							<td>{{ task.email }}</td>
-							<td>{{ task.pass }}</td>
+						<tr v-for="(elm, index) in passlist">
+							<td>{{ elm.content }}</td>
+							<td>{{ elm.id }}</td>
+							<td>{{ elm.email }}</td>
+							<td>{{ elm.pass }}</td>
 							<td>
-								<div class="btn btn-danger"  v-on:click="deletePass(task)">Delete</div>
+								<div class="btn btn-danger"  @click="deletePass(index)">Delete</div>
 							</td>
 						</tr>
 					</tbody>

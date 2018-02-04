@@ -1,28 +1,25 @@
 let tableControl = new Vue({
   el: '#pass-table',
   data:{
-    tasks:[
-      {content: 'lazy', id: 'foo', email: 'hoge@example.com', pass:'fizz', isDeleted: false},
-      {content: 'busy', id: 'hoo', email: 'foga@example.com', pass:'buzz', isDeleted: false},
+    passlist:[
+      {content: 'lazy', id: 'foo', email: 'hoge@example.com', pass:'fizz'},
+      {content: 'busy', id: 'hoo', email: 'foga@example.com', pass:'buzz'},
     ],
     newContents:'',
     newID:'',
     newEmail:'',
     newPass:''
-  }
-  /*
+  },
+
   methods: {
-    createPass:()=>{
-      this.tasks.push({contents: this.newContents, id: this.newID, email:this.newEmail, pass: this.newPass, isDeleted: false}),
-      this.newContents:'',
-      this.newID:'',
-      this.newEmail:'',
-      this.newPass:''
+    /*
+    createPass: function() {
+      this.passlist.push({contents: this.newContents, id: this.newID, email:this.newEmail, pass: this.newPass})
     },
-    deletePass: del => {
-      this.tasks.forEach(elm => {
-        if(elm === del) return elm.isDeleted = true;
-      });
-    };
-  };*/
-});
+    */
+
+    deletePass: function(index) {
+      this.passlist.splice(index, 1);
+    }
+  }
+})
