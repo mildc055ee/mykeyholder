@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<title>keyholder</title>
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/modal.css">
 	</head>
 	<body>
 			<div class="fixed-top mytop">
@@ -22,6 +23,7 @@
 							<th>email</th>
 							<th>password</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thread>
 					<tbody>
@@ -31,12 +33,84 @@
 							<td>{{ elm.email }}</td>
 							<td>{{ elm.pass }}</td>
 							<td>
+								<div class="btn btn-safe" @click="modifyPass(elm)">
+									Modify
+								</div>
+							</td>
+							<td>
 								<div class="btn btn-danger"  @click="deletePass(index)">Delete</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+
+			<!-- testing area -->
+			<!-- template for the modal component -->
+<script type="text/x-template" id="modal-template">
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+
+          <div class="modal-header">
+            <slot name="header">
+              default header
+            </slot>
+          </div>
+
+          <div class="modal-body">
+            <slot name="body">
+              default body
+            </slot>
+          </div>
+
+          <div class="modal-footer">
+              <button class="modal-default-button" @click="$emit('close')">
+                OK
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</script>
+
+<!-- app -->
+<div id="pass-table">
+  <button id="show-modal" @click="showModal = true">Show Modal</button>
+  <!-- use the modal component, pass in the prop -->
+  <modal v-if="showModal" @close="showModal = false">
+    <!--
+      you can use custom content here to overwrite
+      default content
+    -->
+    <h3 slot="header"> Modify password</h3>
+
+    <div slot="body">
+      <table id = "pass-table" class="table table-striped">
+				<thread>
+					<tr>
+						<th>contents</th>
+						<th>ID</th>
+						<th>email</th>
+						<th>password</th>
+					</tr>
+				</thread>
+				<tbody>
+					<tr v-for="(elm, index) in passlist">
+						<td>{{ elm.content }}</td>
+						<td>{{ elm.id }}</td>
+						<td>{{ elm.email }}</td>
+						<td>{{ elm.pass }}</td>
+					</tr>
+				</tbody>
+			</table>
+    </div>
+  </modal>
+</div>
+
+<!-- testing area end-->
 			<div id="pass-adder" class="fixed-bottom">
 				register new password<br />
 				<input v-model="newContents" placeholder="contents">
