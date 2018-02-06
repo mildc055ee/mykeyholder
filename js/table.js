@@ -1,16 +1,25 @@
+let passlist = [
+  {content: 'lazy', id: 'foo', email:'hoge@example.com', pass: 'fizz'},
+  {content: 'busy', id: 'hoo', email:'fuga@example.com', pass: 'buzz'}
+]
+
+Vue.component('modal',{
+  template:"#modal-template"
+});
+
 let tableControl = new Vue({
   el: '#pass-table',
   data:{
     showModal: false,
-    passlist:[
-      {content: 'lazy', id: 'foo', email: 'hoge@example.com', pass:'fizz'},
-      {content: 'busy', id: 'hoo', email: 'foga@example.com', pass:'buzz'},
-    ],
+    passlist
   },
 
   methods: {
     deletePass: function(index) {
       this.passlist.splice(index, 1);
+    },
+    modifyPass: function(elm) {
+
     }
   }
 });
@@ -30,8 +39,4 @@ let addList = new Vue({
       tableControl.passlist.push({content: this.newContents, id: this.newID, email: this.newEmail, pass: this.newPass});
     }
   }
-});
-
-Vue.component('modal',{
-  template:"#modal-template"
 });
