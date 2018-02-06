@@ -4,13 +4,43 @@ let passlist = [
 ]
 
 Vue.component('modal',{
-  template:"#modal-template"
+  template: `<transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-container">
+
+          <div class="modal-header">
+          <slot name="header">
+              default header
+              </slot>
+          </div>
+
+          <div class="modal-body">
+            <slot name="body">
+              default body
+            </slot>
+          </div>
+              <button class="modal-default-button" @click="$emit('close')">
+                OK
+              </button>
+        </div>
+      </div>
+    </div>
+  </transition>
+  `
+})
+
+let mymodal = new Vue({
+  el: "#modal-root",
+  data:{
+    showModal: false,
+    passlist
+  }
 });
 
 let tableControl = new Vue({
   el: '#pass-table',
   data:{
-    showModal: false,
     passlist
   },
 
@@ -36,7 +66,7 @@ let addList = new Vue({
 
   methods:{
     createPass: function() {
-      tableControl.passlist.push({content: this.newContents, id: this.newID, email: this.newEmail, pass: this.newPass});
+      passlist.push({content: this.newContents, id: this.newID, email: this.newEmail, pass: this.newPass});
     }
   }
 });
