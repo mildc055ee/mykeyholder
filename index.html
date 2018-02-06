@@ -20,9 +20,9 @@
 				{{ message }}
 			</div>
 
-			<div >
-				<table id="pass-table" class="table table-striped">
-					<thread>
+			<div id="pass-table">
+				<table class="table table-striped">
+					<thead>
 						<tr>
 							<th>contents</th>
 							<th>ID</th>
@@ -31,7 +31,7 @@
 							<th></th>
 							<th></th>
 						</tr>
-					</thread>
+					</thead>
 					<tbody>
 						<tr v-for="(elm, index) in passlist">
 							<td>{{ elm.content }}</td>
