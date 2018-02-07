@@ -39,7 +39,7 @@
 							<td>{{ elm.email }}</td>
 							<td>{{ elm.pass }}</td>
 							<td>
-									<div class="btn btn-info" @click="modifyPass(elm)">
+									<div class="btn btn-info" @click="modifyPass(elm, index)">
 										Modify
 									</div>
 							</td>
@@ -86,7 +86,10 @@
 							</tbody>
 						</table>
 					</div>
-					<button @click="close()">OK</button>
+					<div slot="modal-btn1" class="btn btn-success" @click="close()">OK</div>
+					<div slot="modal-btn2" class="btn btn-success" @click="returnPass">
+						done
+					</div>
 				</modal>
 			</div>
 

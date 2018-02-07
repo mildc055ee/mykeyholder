@@ -19,9 +19,14 @@ Vue.component('modal',{
               default body
             </slot>
           </div>
-              <button class="btn-success" @click="$emit('close')">
-                OK
-              </button>
+          <div @click="$emit('returnPass')">
+            <slot name="modal-btn1">button 1
+            </slot>
+          </div>
+          <div @click="$emit('close')">
+            <slot name="modal-btn2">button 2
+            </slot>
+          </div>
         </div>
       </div>
     </div>
@@ -51,6 +56,12 @@ let mymodal = new Vue({
                       email: element.email, pass: element.pass
                      }
     },
+    returnPass: function(){
+        tableControl.replacePass(this.newcomp);
+        newcomp.id = '';
+        newcomp.email = '';
+        newcomp.pass = '';
+    },
     close: function(){
       this.showModal = false
     }
@@ -60,17 +71,28 @@ let mymodal = new Vue({
 let tableControl = new Vue({
   el: '#pass-table',
   data:{
-    passlist
+    passlist,
+    modindex: ''
   },
 
   methods: {
     deletePass: function(index) {
-      this.passlist.splice(index, 1);
+      passlist.splice(index, 1);
     },
-    modifyPass: function(elm) {
+    modifyPass: function(elm, index) {
+      this.modindex = index;
       mymodal.invoke(elm);
       mymodal.showModal = true
-    }
+    },
+    replacePass: function(elm){
+      console.log(modindex);
+      if(obj.id != '')
+      passlist[modindex].id = obj.id;
+      if(obj.email != '')
+      passlist[modindex].email = obj.email;
+      if(obj.pass != '')
+      passlist[modindex].pass = obj.pass;
+      }
   }
 });
 
