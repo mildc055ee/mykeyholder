@@ -16,7 +16,7 @@
 }
 
 .modal-container {
-  width: 300px;
+  width: 600px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -24,6 +24,16 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-input-id{
+  width: 75px;
+}
+.modal-input-mail{
+  width: 150px;
+}
+.modal-input-pass{
+  width: 125px;
 }
 
 .modal-header h3 {

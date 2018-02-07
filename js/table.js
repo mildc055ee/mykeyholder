@@ -33,17 +33,23 @@ let mymodal = new Vue({
   el: "#modal-root",
   data:{
     showModal: false,
-    modContents: '',
-    modID: '',
-    modEmail: '',
-    modPass: ''
+    modcomp: {
+              content: '',
+              id: '',
+              email: '',
+              pass: ''
+            },
+    newcomp: {
+              id: '',
+              email: '',
+              pass: ''
+            }
   },
   methods:{
-    inspire: function(element){
-      this.modContents = element.content;
-      this.modID = element.id;
-      this.modEmail = element.email;
-      this.modPass = element.pass
+    invoke: function(element){
+      this.modcomp = {content: element.content, id: element.id,
+                      email: element.email, pass: element.pass
+                     }
     },
     close: function(){
       this.showModal = false
@@ -62,7 +68,7 @@ let tableControl = new Vue({
       this.passlist.splice(index, 1);
     },
     modifyPass: function(elm) {
-      mymodal.inspire(elm);
+      mymodal.invoke(elm);
       mymodal.showModal = true
     }
   }
