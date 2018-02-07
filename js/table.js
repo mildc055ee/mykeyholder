@@ -10,9 +10,8 @@ Vue.component('modal',{
         <div class="modal-container">
 
           <div class="modal-header">
-          <slot name="header">
-              default header
-              </slot>
+            <slot name="header">
+            </slot>
           </div>
 
           <div class="modal-body">
@@ -20,7 +19,7 @@ Vue.component('modal',{
               default body
             </slot>
           </div>
-              <button class="modal-default-button" @click="$emit('close')">
+              <button class="btn-success" @click="$emit('close')">
                 OK
               </button>
         </div>

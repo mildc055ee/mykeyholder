@@ -52,8 +52,8 @@
 			</div>
 
 			<div id = "modal-root">
-				<modal v-if="showModal">
-					<h3 slot="header">custom header</h3>
+				<modal v-if="showModal" @close="showModal = false">
+					<h3 slot="header">Modify Password</h3>
 					<button @click="close()">OK</button>
 				</modal>
 			</div>
