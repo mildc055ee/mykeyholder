@@ -39,13 +39,9 @@
 							<td>{{ elm.email }}</td>
 							<td>{{ elm.pass }}</td>
 							<td>
-								<div id="modal-root">
-									<div id="show-modal" class="btn btn-info" @click="showModal=true">
+									<div class="btn btn-info" @click="modifyPass(elm)">
 										Modify
 									</div>
-									<modal v-if="showModal" @close="showModal=false">
-									</modal>
-								</div>
 							</td>
 							<td>
 								<div class="btn btn-danger"  @click="deletePass(index)">Delete</div>
@@ -53,6 +49,13 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+
+			<div id = "modal-root">
+				<modal v-if="showModal">
+					<h3 slot="header">custom header</h3>
+					<button @click="close()">OK</button>
+				</modal>
 			</div>
 
 			<div id="pass-adder" class="fixed-bottom">
