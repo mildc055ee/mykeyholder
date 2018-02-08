@@ -85,11 +85,11 @@ let tableControl = new Vue({
       mymodal.showModal = true
     },
     replacePass: function(elm){
-      if(elm.id != '')
+      if(!elm.id.match(/\S/g))
       passlist[this.modindex].id = elm.id;
-      if(elm.email != '')
+      if(!elm.email.match(/\S/g))
       passlist[this.modindex].email = elm.email;
-      if(elm.pass != '')
+      if(!elm.pass.match(/\S/g))
       passlist[this.modindex].pass = elm.pass;
       }
   }
@@ -107,11 +107,14 @@ let addList = new Vue({
 
   methods:{
     createPass: function() {
-      passlist.push({content: this.newContents, id: this.newID, email: this.newEmail, pass: this.newPass});
-      this.newContents='';
-      this.newID = '';
-      this.newEmail = '';
-      this.newPass = '';
+      if(this.newContents.match(/\S/g) && this.newID.match(/\S/g)
+      && this.newEmail.match(/\S/g) && this.newPass.match(/\S/g)){
+        passlist.push({content: this.newContents, id: this.newID, email: this.newEmail, pass: this.newPass});
+        this.newContents='';
+        this.newID = '';
+        this.newEmail = '';
+        this.newPass = '';
+      }
     }
   }
 });
