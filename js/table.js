@@ -85,12 +85,12 @@ let tableControl = new Vue({
       mymodal.showModal = true
     },
     replacePass: function(elm){
-      if(!elm.id.match(/\S/g))
-      passlist[this.modindex].id = elm.id;
-      if(!elm.email.match(/\S/g))
-      passlist[this.modindex].email = elm.email;
-      if(!elm.pass.match(/\S/g))
-      passlist[this.modindex].pass = elm.pass;
+      if(elm.id.match(/\S/g))
+        passlist[this.modindex].id = elm.id;
+      if(elm.email.match(/\S/g))
+        passlist[this.modindex].email = elm.email;
+      if(elm.pass.match(/\S/g))
+        passlist[this.modindex].pass = elm.pass;
       }
   }
 });
