@@ -1,29 +1,37 @@
 <!doctype html>
 <html>
 	<head>
+
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<title>keyholder</title>
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/modal.css">
+
 	</head>
+
 	<body>
-			<div class="fixed-top mytop">
+
+			<div class="nav-fixed-top mytop">
 				Key Manager
 			</div>
+
 			<div id = "app" class="padding body">
 				{{ message }}
 			</div>
-			<div id="table" class="body">
-				<table id = "pass-table" class="table table-striped">
-					<thread>
+
+			<div id="pass-table">
+				<table class="table table-striped">
+					<thead>
 						<tr>
 							<th>contents</th>
 							<th>ID</th>
 							<th>email</th>
 							<th>password</th>
 							<th></th>
+							<th></th>
 						</tr>
-					</thread>
+					</thead>
 					<tbody>
 						<tr v-for="(elm, index) in passlist">
 							<td>{{ elm.content }}</td>
@@ -31,12 +39,58 @@
 							<td>{{ elm.email }}</td>
 							<td>{{ elm.pass }}</td>
 							<td>
+									<div class="btn btn-info" @click="modifyPass(elm, index)">
+										Modify
+									</div>
+							</td>
+							<td>
 								<div class="btn btn-danger"  @click="deletePass(index)">Delete</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+
+			<div id = "modal-root">
+				<modal v-if="showModal" @close="showModal = false">
+					<h3 slot="header">Modify</h3>
+					<div slot="body">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>contents</th>
+									<th>ID</th>
+									<th>email</th>
+									<th>password</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td >{{ modcomp.content }}</td>
+									<td >{{ modcomp.id }}</td>
+									<td >{{ modcomp.email }}</td>
+									<td >{{ modcomp.pass }}</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td>
+										<input v-model="newcomp.id" class="modal-input-id" placeholder="new id" />
+									</td>
+									<td>
+										<input v-model="newcomp.email" class="modal-input-mail" placeholder="new Email"/>
+									</td>
+									<td	>
+										<input v-model="newcomp.pass" class="modal-input-pass" placeholder="new password" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div slot="modal-btn1" @click="close()">Cancel</div>
+					<div slot="modal-btn2" @click="returnPass">Change</div>
+				</modal>
+			</div>
+
 			<div id="pass-adder" class="fixed-bottom">
 				register new password<br />
 				<input v-model="newContents" placeholder="contents">
@@ -45,8 +99,11 @@
 				<input v-model="newPass" placeholder="password">
 				<div class="btn btn-primary" @click="createPass()">Register</div>
 			</div>
+
 	</body>
+
 	<script src="./js/vue.js"></script>
 	<script type="text/javascript" src="./js/layout.js"></script>
 	<script type="text/javascript" src="./js/table.js"></script>
+
 </html>
