@@ -20,39 +20,34 @@
                 </b-table>
             </b-tab-item>
 
+            <b-tab-item label="Edit">
+                <edit-tab v-model="selected"></edit-tab>
+            </b-tab-item>
+            <!--
+            <b-tab-item>
+                <add-tab v-model="data"></add-tab>
+            </b-tab-item>
+            -->
+
             <b-tab-item label="Selected">
                 <select-tab v-model="selected"/>
             </b-tab-item>
         </b-tabs>
     </div>
   </section>
-<!--
-  <section class="section footer">
-      <div class="columns">
-          <b-field label="Content" class="column">
-              <b-input v-model="content"></b-input>
-          </b-field>
-          <b-field label="UserName" class="column">
-              <b-input v-model="username"></b-input>
-          </b-field>
-          <b-field label="Email" class="column">
-              <b-input v-model="email"  type="email"></b-input>
-          </b-field>
-          <b-field label="Password" class="column">
-              <b-input v-model="password"></b-input>
-          </b-field>
-      </div>
-  </section>
--->
 </div>
 </template>
 
 <script>
     import SelectTab from './childcomponents/Select.vue'
+    import AddTab from './childcomponents/Add.vue'
+    import EditTab from './childcomponents/Edit.vue'
 
     export default {
         components:{
-            SelectTab
+            //AddTab,
+            SelectTab,
+            EditTab
         },
         data () {
             let data = [
