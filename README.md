@@ -2,6 +2,24 @@
 
 > An electron-vue project
 
+mykeymanagerの再実装
+#### 改善予定
+- 肥大化したjsファイルの分解
+- UIの向上
+
+#### 使用しているライブラリ・フレームワーク
+- electron-vue
+- Buefy
+
+#### Git Prefix
+- [fix] バグの修正
+- [add] 新規ファイル・画像など
+- [feat] 新機能実装
+- [refact] リファクタリング
+- [edit] バグを伴わない箇所などの編集
+- [del] 削除
+- [chore] ライブラリの追加
+
 #### Build Setup
 
 ``` bash
