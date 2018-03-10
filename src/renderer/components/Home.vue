@@ -21,7 +21,7 @@
             </b-tab-item>
 
             <b-tab-item label="Selected">
-                <child-tab v-model="selected"/>
+                <select-tab v-model="selected"/>
             </b-tab-item>
         </b-tabs>
     </div>
@@ -48,11 +48,11 @@
 </template>
 
 <script>
-    import ChildTab from './childcomponents/Child.vue'
+    import SelectTab from './childcomponents/Select.vue'
 
     export default {
         components:{
-            ChildTab
+            SelectTab
         },
         data () {
             let data = [
