@@ -21,12 +21,12 @@
             </b-tab-item>
 
             <b-tab-item label="Selected">
-                <pre>{{ selected }}</pre>
+                <child-tab v-model="selected"/>
             </b-tab-item>
         </b-tabs>
     </div>
   </section>
-
+<!--
   <section class="section footer">
       <div class="columns">
           <b-field label="Content" class="column">
@@ -43,11 +43,17 @@
           </b-field>
       </div>
   </section>
+-->
 </div>
 </template>
 
 <script>
+    import ChildTab from './childcomponents/Child.vue'
+
     export default {
+        components:{
+            ChildTab
+        },
         data () {
             let data = [
                 {'content':'twitter', 'username':'foo', 'email':'fuga@example.org', 'password': 'fizz'},
