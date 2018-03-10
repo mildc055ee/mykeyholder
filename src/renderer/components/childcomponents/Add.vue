@@ -2,19 +2,19 @@
 <div class="container">
     <div class="columns">
         <b-field label="Content" class="column">
-            <b-input v-model="content"></b-input>
+            <b-input v-model="newpass.content"></b-input>
         </b-field>
         <b-field label="UserName" class="column">
-            <b-input v-model="username" type="string"></b-input>
+            <b-input v-model="newpass.username" type="string"></b-input>
         </b-field>
         <b-field label="Email" class="column">
-            <b-input v-model="email"  type="email"></b-input>
+            <b-input v-model="newpass.email"  type="email"></b-input>
         </b-field>
         <b-field label="Password" class="column">
-            <b-input v-model="password"></b-input>
+            <b-input v-model="newpass.password"></b-input>
         </b-field>
     </div>
-    <div class="button is-primary outlined"> regist </div>
+    <div class="button is-primary outlined" @click="regist"> regist </div>
 </div>
 </template>
 
@@ -23,13 +23,21 @@ export default {
   props:{
       value: Array
   },
-  data:{
-    newpass: {
+  data(){
+    let newpass = {
           "content": '',
           "username": '',
           "email": '',
           "password": ''
     }
+    return {
+        newpass
+    }
+  },
+  methods:{
+      regist(){
+          this.value.push(this.newpass)
+      }
   }
 }
 </script>

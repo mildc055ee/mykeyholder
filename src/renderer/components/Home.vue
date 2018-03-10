@@ -23,12 +23,11 @@
             <b-tab-item label="Edit">
                 <edit-tab v-model="selected"></edit-tab>
             </b-tab-item>
-            <!--
-            <b-tab-item>
+            
+            <b-tab-item label="Register">
                 <add-tab v-model="data"></add-tab>
             </b-tab-item>
-            -->
-
+            
             <b-tab-item label="Selected">
                 <select-tab v-model="selected"/>
             </b-tab-item>
@@ -45,7 +44,7 @@
 
     export default {
         components:{
-            //AddTab,
+            AddTab,
             SelectTab,
             EditTab
         },
