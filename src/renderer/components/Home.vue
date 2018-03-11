@@ -31,22 +31,31 @@
             <b-tab-item label="Selected">
                 <select-tab v-model="selected"/>
             </b-tab-item>
+<!--
+            <b-tab-item label="Delete">
+                <delete-tab v-model="data"/>
+            </b-tab-item>
+            -->
         </b-tabs>
     </div>
+    <button class="button is-danger" @click="erase">delete
+    </button>
   </section>
 </div>
 </template>
 
 <script>
-    import SelectTab from './childcomponents/Select.vue'
     import AddTab from './childcomponents/Add.vue'
     import EditTab from './childcomponents/Edit.vue'
+    import SelectTab from './childcomponents/Select.vue'
+    import DeleteTab from './childcomponents/Delete.vue'
 
     export default {
         components:{
             AddTab,
             SelectTab,
-            EditTab
+            EditTab,
+            //DeleteTab
         },
         data () {
             let data = [
@@ -79,18 +88,15 @@
                 ]
             }
         },
-        /*
         methods:{
-            insert: function () {
-                this.data.push(JSON.stringify(
-                    {"content": this.content,
-                     "username": this.username,
-                     "email": this.email,
-                     "password": this.password
-                    }
-                ))
+            check(){
+                console.log(this.data.indexOf(this.selected))
+            },
+            erase (){
+                if(this.data.length === 0) return
+                let target = this.data.indexOf(this.selected)
+                this.data.splice(target, 1)
             }
         }
-        */
     }
 </script>
