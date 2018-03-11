@@ -31,14 +31,9 @@
             <b-tab-item label="Selected">
                 <select-tab v-model="selected"/>
             </b-tab-item>
-<!--
-            <b-tab-item label="Delete">
-                <delete-tab v-model="data"/>
-            </b-tab-item>
-            -->
         </b-tabs>
     </div>
-    <button class="button is-danger" @click="erase">delete
+    <button class="button is-danger" @click="alert">Delete
     </button>
   </section>
 </div>
@@ -48,16 +43,15 @@
     import AddTab from './childcomponents/Add.vue'
     import EditTab from './childcomponents/Edit.vue'
     import SelectTab from './childcomponents/Select.vue'
-    import DeleteTab from './childcomponents/Delete.vue'
 
     export default {
         components:{
             AddTab,
             SelectTab,
             EditTab,
-            //DeleteTab
         },
         data () {
+            let show = false
             let data = [
                 {'content':'twitter', 'username':'foo', 'email':'fuga@example.org', 'password': 'fizz'},
                 {'content':'facebook', 'username':'goo', 'email':'lazy@example.org', 'password': 'buzz'},
@@ -66,6 +60,7 @@
 
             return {
                 data,
+                show,
                 selected: data[0],
                 columns:[
                     {
@@ -89,8 +84,16 @@
             }
         },
         methods:{
-            check(){
-                console.log(this.data.indexOf(this.selected))
+            alert() {
+                this.$dialog.confirm({
+                    title: 'Caution',
+                    message: 'This action cannot be undone. Are you sure?',
+                    type: 'is-danger',
+                    hasIcon: true,
+                    onConfirm: () => {
+                        this.erase()
+                    }
+                })
             },
             erase (){
                 if(this.data.length === 0) return

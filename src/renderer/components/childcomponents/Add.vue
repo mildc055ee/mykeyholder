@@ -37,6 +37,10 @@ export default {
   methods:{
       regist(){
           this.value.push(this.newpass)
+          this.newpass.content=''
+          this.newpass.username=''
+          this.newpass.email=''
+          this.newpass.password=''
       }
   }
 }
